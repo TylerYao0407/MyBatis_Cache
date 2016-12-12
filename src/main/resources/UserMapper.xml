@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tyler.mapper.UserMapper">
+    <resultMap id="userMap" type="User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+    </resultMap>
+    <select id="selectUser" parameterType="int" resultMap="userMap">
+        select * from user where id=#{id}
+    </select>
+    <!--加入二级缓存-->
+    <!--在pojo中的类必须实现序列化，否则报错-->
+    <cache/>
+</mapper>
